@@ -89,7 +89,7 @@ export const theme = (() => {
     };
 
     const isDarkMode = (onDark = null, onLight = null) => {
-        const status = theme.get('active') === THEME_LIGHT;
+        const status = theme.get('active') === THEME_DARK;
 
         if (onDark && onLight) {
             return status ? onDark : onLight;
@@ -106,7 +106,7 @@ export const theme = (() => {
         } else {
             onDark();
             document.documentElement.setAttribute(THEME_BS_DATA, THEME_DARK);
-            theme.set('active', THEME_LIGHT);
+            theme.set('active', THEME_DARK);
         }
     };
 
@@ -114,8 +114,8 @@ export const theme = (() => {
         if (!theme.has('active')) {
             theme.set('active', THEME_LIGHT);
 
-            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                theme.set('active', THEME_LIGHT);
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                theme.set('active', THEME_DARK);
             }
         }
 
